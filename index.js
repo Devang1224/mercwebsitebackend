@@ -33,7 +33,7 @@ mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
     console.log("successfully connected with mongodb");
-    app.listen(process.env.PORT,()=>{console.log("server is running on port: 3000");})
+    app.listen(process.env.PORT || 6010,()=>{console.log("server is running on port: 3000");})
 })
 .catch((err)=>{console.log(err);})
 
