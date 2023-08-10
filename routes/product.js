@@ -11,7 +11,6 @@ const router = express.Router();
 router.post("/",verifyTokenAndAdmin,async (req,res)=>{
 
     const newProduct = new Product(req.body)
-    console.log(req.body);
 
     try{
         
@@ -94,13 +93,16 @@ router.get("/",async(req,res)=>{
                     $in:[qCategory]
                 }
             })
-
+           
         }
         else{
             
             products= await Product.find();
         }
-      res.status(200).json(products)
+
+        if(products.length==0)
+        {res.status(404).json({message:"No products found"}) }
+        else{res.status(200).json(products)}
     
     }
    
