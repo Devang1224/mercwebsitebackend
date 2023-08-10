@@ -6,7 +6,7 @@ const OrderSchema = new schema(
     {
          userId:{
             type:String,
-            required:true,
+            required:true
          },
 
         products:[

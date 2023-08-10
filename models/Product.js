@@ -15,7 +15,7 @@ const ProductSchema = new schema(
             required:true,
          },
          img:{
-            type:String,
+            type:Array,
             required:true,
          },
          categories:{
@@ -27,7 +27,7 @@ const ProductSchema = new schema(
             required:true,
          },
          color:{
-            type:Array,
+            type:String,
             required:true,
          },
          price:{

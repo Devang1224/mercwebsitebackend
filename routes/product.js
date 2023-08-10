@@ -11,16 +11,17 @@ const router = express.Router();
 router.post("/",verifyTokenAndAdmin,async (req,res)=>{
 
     const newProduct = new Product(req.body)
+    console.log(req.body);
 
     try{
- 
+        
         const savedProduct = await newProduct.save();
         res.status(200).json(savedProduct);
 
     }
     catch(err){
 
-        res.status(500).json(err)
+        res.status(500).json(err.message)
     }
 
 })
@@ -73,7 +74,6 @@ router.get("/find/:id",async(req,res)=>{
    })
 
 // get all products
-
 router.get("/",async(req,res)=>{
 
     const qNew = req.query.new;
@@ -84,7 +84,7 @@ router.get("/",async(req,res)=>{
         let products;
         if(qNew)
         {
-            products = await Product.find().sort({createdAt:-1}).limit(5);
+            products = await Product.find().sort({createdAt:-1});
 
         }
         else if(qCategory)
@@ -111,7 +111,18 @@ router.get("/",async(req,res)=>{
    
    })
 
+router.get("/featuredProducts",async(req,res)=>{
+  
+try{
+       const products = await Product.find().limit(8);
+       res.status(200).json(products);
+}
+catch(err)
+{
+  res.status(500).json(err.message);
+}
 
+})
 
 
 module.exports = router;
