@@ -8,7 +8,7 @@ dotenv.config();
 
 app.use(express.json());
 app.use(cors({
-    origin:'https://fashflix.netlify.app/'
+    origin:''
 }))
 
 //routes
