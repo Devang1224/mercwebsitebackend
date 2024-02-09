@@ -7,7 +7,9 @@ const app=express()
 dotenv.config();
 
 app.use(express.json());
-app.use(cors())
+app.use(cors({
+    origin:'https://fashflix.netlify.app/'
+}))
 
 //routes
 const authRoute = require("./routes/auth")
@@ -33,7 +35,7 @@ mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
     console.log("successfully connected with mongodb");
-    app.listen(process.env.PORT || 6010,()=>{console.log("server is running on port: 3000");})
+    app.listen(process.env.PORT || 6010,()=>console.log("server is running"))
 })
 .catch((err)=>{console.log(err);})
 
