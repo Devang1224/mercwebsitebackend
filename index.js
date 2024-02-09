@@ -6,7 +6,7 @@ const cors = require('cors')
 const app=express()
 dotenv.config();
 app.use(cors({
-    origin:'https://fashflix.netlify.app/'
+    origin:'https://fashflix.netlify.app'
 }))
 app.use(express.json());
 
